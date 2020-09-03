@@ -11,8 +11,8 @@
         .from(document.querySelectorAll('code > a'))
         .map(el => el.innerText)
         .sort((a, b) => a.length > b.length);
-      let events = [...new Set(raw)];
-      events.innerText = events.join(',');
+      let eventsList = [...new Set(raw)];
+      events.innerText = eventsList.join(',');
     })();
   </script>
 </body>
