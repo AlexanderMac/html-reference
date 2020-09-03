@@ -2,12 +2,15 @@
   <meta encoding=utf-8>
 </head>
 <body>
-  <div id=events />
+  <div id=events></div>
   <script>
     (async function() {
       let res = await fetch('https://developer.mozilla.org/en-US/docs/Web/Events');
       let body = await res.text();
-      let raw = $$('code > a').map(el => el.innerText).sort((a, b) => a.length > b.length);
+      let raw = Array
+        .from(document.querySelectorAll('code > a'))
+        .map(el => el.innerText)
+        .sort((a, b) => a.length > b.length);
       let events = [...new Set(raw)];
       events.innerText = events.join(',');
     })();
