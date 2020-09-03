@@ -2,5 +2,14 @@
   <meta encoding=utf-8>
 </head>
 <body>
-  <script>alert(1)</script>
+  <div id=events />
+  <script>
+    (async function() {
+      let res = await fetch('https://developer.mozilla.org/en-US/docs/Web/Events');
+      let body = await res.text();
+      let raw = $$('code > a').map(el => el.innerText).sort((a, b) => a.length > b.length);
+      let events = [...new Set(raw)];
+      events.innerText = events.join(',');
+    })();
+  </script>
 </body>
